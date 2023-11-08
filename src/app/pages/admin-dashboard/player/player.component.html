@@ -1,0 +1,91 @@
+<!-- sidebar -->
+<app-admin-dashboard></app-admin-dashboard>
+
+<div class="bootstrap-wrapper">
+  <div class="bg text-center">
+    <mat-card class="width text-center">
+      <h1 class="text-center">
+        <b><u>Add New Player</u> </b>
+      </h1>
+
+        <!-- {{playerData |json}} -->
+
+      <form (ngSubmit)="save()">
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Player Name</mat-label>
+          <input [(ngModel)]="playerData.player_name" name="player_name" id="player_name" matInput
+            placeholder="Enter player name" required/>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Team Name</mat-label>
+          <mat-select name="team_name" [(ngModel)]="playerData.team_name">
+            <mat-option *ngFor= "let team of TeamArray" [value]="team.name">{{team.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Player Skills</mat-label>
+          <input [(ngModel)]="playerData.player_skills" name="player_skills" id="player_skills" matInput
+            placeholder="Enter player skills" required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Player points</mat-label>
+          <input [(ngModel)]="playerData.player_points" name="player_points" id="player_points" matInput
+            placeholder="Enter player points" required />
+        </mat-form-field>
+
+        <div class="container text-center mb10">
+          <button type="submit" mat-raised-button color="primary" class="mb10">
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
+
+
+
+<!-- All players Data -->
+<div>
+  <mat-card class="wid">
+    <div class="text-center">
+      <h1 class="mt20"><u><b>All Player Details </b></u></h1>
+      <table class="table table-hover table-bordered text-center justify">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Player Name</th>
+            <th scope="col">Team Name</th>
+            <th scope="col">Player Skills</th>
+            <th scope="col">Player Points</th>
+            <th scope="col">Action</th>
+            <!-- <th scope="col">Delete</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let PlayerItem of PlayerArray; let i = index">
+            <!-- <th scope="row">1</th> -->
+            <td>{{ PlayerItem.id }}</td>
+            <td>{{ PlayerItem.player_name}}</td>
+            <td>{{ PlayerItem.team_name}}</td>
+            <td>{{ PlayerItem.player_skills}}</td>
+            <td>{{ PlayerItem.player_points}}</td>
+            <td>
+              <button type="submit" mat-raised-button (click)="edit(PlayerItem)" class="mr20" color="primary"
+                title="Edit">
+                Edit
+              </button>
+              <button type="submit" mat-raised-button (click)="delete(PlayerItem.id)" color="warn" title="Delete">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+</div>

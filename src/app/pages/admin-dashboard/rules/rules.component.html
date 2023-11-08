@@ -1,0 +1,42 @@
+<!-- sidebar -->
+<app-admin-dashboard></app-admin-dashboard>
+
+<mat-card class="wid">
+    <div class="text-center">
+        <h1 class="mt20"><u><b> Game Rules </b></u></h1>
+        <table class="table table-hover table-bordered text-center justify">
+            <thead class="table-dark">
+                <tr>
+                    <th>Property</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>fielding boundary points</td>
+                    <td>{{gameRules['fielding boundary points']}}</td>
+                </tr>
+                <tr>
+                    <td>batting boundary points</td>
+                    <td>{{gameRules['batting boundary points']}}</td>
+                </tr>
+                <tr>
+                    <td>batting run points</td>
+                    <td>{{gameRules['batting run points']}}</td>
+                </tr>
+                <tr>
+                    <td>bowling boundary points</td>
+                    <td>{{gameRules['bowling boundary points']}}</td>
+                </tr>
+                <tr>
+                    <td>bowling wicket points</td>
+                    <td>{{gameRules['bowling wicket points']}}</td>
+                </tr>
+                <tr>
+                    <td>other points caption</td>
+                    <td>{{gameRules['other points caption']}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</mat-card>

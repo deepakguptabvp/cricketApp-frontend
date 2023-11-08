@@ -1,0 +1,132 @@
+<!-- sidebar -->
+<app-admin-dashboard></app-admin-dashboard>
+
+<!-- match fixture -->
+<div class="bootstrap-wrapper">
+  <div class="bg text-center">
+    <mat-card class="width text-center">
+      <h1 class="text-center">
+        <b><u>Add New Match Fixture</u> </b>
+      </h1>
+
+      <!-- {{matchFixData | json}} -->
+
+
+      <form (ngSubmit)="save()">
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Team A</mat-label>
+          <mat-select name="teamA" [(ngModel)]="matchFixData.teamA">
+            <mat-option *ngFor="let team of TeamArray" [value]="team.name">{{team.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Team B</mat-label>
+          <mat-select name="teamB" [(ngModel)]="matchFixData.teamB">
+            <mat-option *ngFor="let team of TeamArray" [value]="team.name">{{team.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Venue</mat-label>
+          <!-- <input [(ngModel)]="matchFixData.venue" name="venue" id="venue" matInput placeholder="Enter venue name"
+            required /> -->
+
+          <mat-select [(ngModel)]="matchFixData.venue" name="venue" id="venue" matInput placeholder="venue" required>
+            <mat-option>None</mat-option>
+            <mat-option value="Motera Stadium Ahmedabad">Motera Stadium Ahmedabad</mat-option>
+            <mat-option value="Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow">Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow</mat-option>
+            <mat-option value="Eden Garden (Kolkata, West Bengal)">Eden Garden (Kolkata, West Bengal)</mat-option>
+            <mat-option value="Jawaharlal Nehru Stadium (Kochi, Kerala)">Jawaharlal Nehru Stadium (Kochi, Kerala)
+            </mat-option>
+            <mat-option value="Feroz Shah Kotla Stadium (Delhi)">Feroz Shah Kotla Stadium (Delhi)</mat-option>
+            <mat-option value="Sardar Patel Stadium (Ahmedabad, Gujarat)">Sardar Patel Stadium (Ahmedabad, Gujarat)
+            </mat-option>
+            <mat-option value="Y.Patil Stadium (Navi Mumbai, Maharashtra)">Y.Patil Stadium (Navi Mumbai, Maharashtra)
+            </mat-option>
+            <mat-option value="Wankhede Stadium (Mumbai, Maharashtra)">Wankhede Stadium (Mumbai, Maharashtra)
+            </mat-option>
+            <mat-option value="A.Chadambaram Cricket Stadium (Chennai, Tamil Nadu)">A.Chadambaram Cricket Stadium
+              (Chennai, Tamil Nadu)</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <!-- <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Select a date (MM/DD/YYYY)</mat-label>
+          <input [(ngModel)]="matchFixData.date" name="date" id="date" matInput [matDatepicker]="picker" required />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Date & Time</mat-label>
+          <input  type="datetime-local" [(ngModel)]="matchFixData.date"  id="date" name="date" matInput
+            placeholder="date" required />
+        </mat-form-field>
+ 
+        <!-- <input [(ngModel)]="matchFixData.dateTime" type="datetime-local"  name="matchdatetime" matInput placeholder="matchdatetime"> -->
+
+
+        <div class="container text-center mb10">
+          <button type="submit" mat-raised-button color="primary" class="mb10"> Submit </button>
+        </div>    
+      </form>
+    </mat-card>
+  </div>
+</div>
+
+
+
+<!-- <select name="matches" id="matches">
+            <option value="">Choose League </option>
+            <option value="League Match">League Match</option>
+            <option value="Quarter-Final">Quarter-Final</option>
+            <option value="Semi-Final">Semi-Final</option>
+            <option value="FINAL">FINAL</option>
+          </select> -->
+
+
+<!-- All Match Fixtures Data -->
+<div>
+  <mat-card class="wid">
+    <div class="text-center">
+      <h1 class="mt20"><u><b>All Match Fixtures Details </b></u></h1>
+      <table class="table table-hover table-bordered text-center justify">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">S. No.</th>
+            <th scope="col">Match Team</th>
+            <!-- <th scope="col">Team-B</th> -->
+            <th scope="col">Venue</th>
+            <th scope="col">Date & Time</th>
+            <th scope="col">Action</th>
+            <!-- <th scope="col">Delete</th> -->
+          </tr>
+        </thead>
+        <tbody>
+         
+          <tr *ngFor="let MatchItem of PlayerArray; let i = index">
+            <!-- <th scope="row">1</th> -->
+            <td>{{ MatchItem.id }}</td>
+            <td>{{ MatchItem.teamA}} vs {{ MatchItem.teamB}}</td>
+            <!-- <td>{{ MatchItem.teamB}}</td> -->
+            <td>{{ MatchItem.venue}}</td>
+            <td>{{ MatchItem.date | date:"medium"}}</td>
+            <td>
+              <button type="submit" mat-raised-button (click)="edit(MatchItem)" class="mr20" color="primary" title="Edit">
+                Edit
+              </button>
+              <button type="submit" mat-raised-button (click)="delete(MatchItem.id)" color="warn" title="Delete">
+                Delete
+              </button>
+            </td>
+            <!-- efwnfwfnwro -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+</div>

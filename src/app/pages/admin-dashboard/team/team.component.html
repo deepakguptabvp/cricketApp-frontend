@@ -1,0 +1,73 @@
+<!-- sidebar -->
+<app-admin-dashboard></app-admin-dashboard>
+
+<!-- add new team -->
+<div class="bootstrap-wrapper">
+    <div class="bg text-center">
+        <mat-card class="width text-center">
+            <h1 class="text-center mt10">
+                <b><u>Add New Team</u> </b>
+            </h1>
+
+            <form (ngSubmit)="formSubmit()">
+
+                <mat-form-field class="full-width ml10" appearance="fill">
+                    <mat-label>Team Name</mat-label>
+                    <input [(ngModel)]="teamData.name" name="name" id="name" matInput placeholder="Enter team name"
+                        required />
+                    <!-- <span *ngIf="name.invalid && name.touched" class="ml20">Name is required </span> -->
+                </mat-form-field>
+
+                <mat-form-field class="full-width ml10" appearance="fill">
+                    <mat-label>Team Logo</mat-label>
+                    <input [(ngModel)]="teamData.logo" name="logo" id="logo" matInput
+                        placeholder="Upload your logo here" required />
+                </mat-form-field>
+   
+
+                <div class="container text-center mb10">
+                    <button type="submit" mat-raised-button color="primary" class="mb10">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>
+
+<!-- showing data of all country teams -->
+<div>
+    <mat-card class="wid">
+    <div class="text-center">
+    <h1 class="mt20"><u><b>All Team Details </b></u></h1>
+    <table class="table table-hover table-bordered text-center justify">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Logo</th>
+                <th scope="col">Action</th>
+                <!-- <th scope="col">Delete</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let TeamItem of TeamArray; let i = index">
+                <!-- <th scope="row">1</th> -->
+                <td>{{ i + 1 }}</td>
+                <td>{{ TeamItem.name }}</td>
+                <td><img src="{{ TeamItem.logo }}" width="50px" height="50px" alt=""></td>
+                <td>
+                    <!-- <button type="submit" mat-raised-button class="mr20" color="primary" title="Edit">
+                        Edit
+                    </button> -->
+
+                    <button type="submit" mat-raised-button (click)="deleteTeam(TeamItem.id)" color="warn" title="Delete">
+                        Delete    
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</mat-card>
+</div>

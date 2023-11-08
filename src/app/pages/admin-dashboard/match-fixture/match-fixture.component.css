@@ -1,0 +1,34 @@
+.bg {
+    margin-left: 250px;
+}
+
+.full-width {
+    width: 86%;
+    /* text-align: center; */
+}
+
+.width {
+    width: 600px;
+    margin-left: 200px;
+    border-radius: 50px;
+    box-shadow: 10px 10px ;
+}
+
+.wid{
+    margin-left: 250px;
+    margin-top: 20px;
+    text-align: justify;
+    background-color: rgb(216, 219, 223);
+}
+
+.table{
+    border: 1px solid;
+}
+
+.mdc-text-field__input::-webkit-calendar-picker-indicator {
+    display: block !important;
+}
+
+/* 
+ekfjwefwekfkwef
+ */

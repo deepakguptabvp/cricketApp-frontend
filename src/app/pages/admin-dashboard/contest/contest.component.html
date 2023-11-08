@@ -1,0 +1,122 @@
+<!-- sidebar -->
+<app-admin-dashboard></app-admin-dashboard>
+
+<!-- create contest -->
+<div class="bootstrap-wrapper">
+    <div class="bg text-center">
+        <mat-card class="width text-center mb20">
+            <h1 class="text-center">
+                <b><u>Add New Contest </u> </b>
+            </h1>
+
+            <!-- {{contestData |json}} -->
+
+            <form (ngSubmit)="save()">
+
+                <mat-form-field class="full-width ml10" appearance="fill">
+                    <mat-label>Contest Name</mat-label>
+                    <input [(ngModel)]="contestData.name" name="name" id="name" matInput
+                        placeholder="Enter contest name" required />
+                </mat-form-field>
+
+                <!-- <mat-form-field class="full-width ml10" appearance="fill">
+                    <mat-label>Match Team</mat-label>
+                    <input [(ngModel)]="contestData" name="name" id="name" matInput
+                        placeholder="Enter contest name" required />
+                </mat-form-field> -->
+
+                <mat-form-field class="half-width ml10" appearance="fill">
+                    <mat-label>Entry Fee</mat-label>
+                    <input [(ngModel)]="contestData.entryFee" type="number" name="entryFee" id="entryFee" matInput
+                        placeholder="Enter entry fee amount" required />
+                </mat-form-field>
+
+                <mat-form-field class="half-width ml10 mr20" appearance="fill">
+                    <mat-label>Prize Money</mat-label>
+                    <input [(ngModel)]="contestData.prizeMoney" type="number" name="prizeMoney" id="prizeMoney" matInput
+                        placeholder="Enter prize money amount" required />
+                </mat-form-field>
+
+                <mat-form-field class="half-width ml10" appearance="fill">
+                    <mat-label>Min Size</mat-label>
+                    <input [(ngModel)]="contestData.minSize" type="number" name="minSize" id="minSize" matInput
+                        placeholder="Enter min size amount" required />
+                </mat-form-field>
+
+                <mat-form-field class="half-width ml10 mr20" appearance="fill">
+                    <mat-label>Max Size</mat-label>
+                    <input [(ngModel)]="contestData.maxSize" type="number" name="maxSize" id="maxSize" matInput
+                        placeholder="Enter max size amount" required />
+                </mat-form-field>
+
+
+                <p><b> Prize Money Breakup </b></p>
+
+                <mat-label>Rank #1</mat-label>
+                <mat-form-field class="half-width ml10" appearance="fill">
+                    <input [(ngModel)]="contestData.rank1" type="number" name="rank1" id="rank1" matInput
+                        placeholder="Rank#1 prize money" required />
+                </mat-form-field> <br>
+
+                <mat-label>Rank #2</mat-label>
+                <mat-form-field class="half-width ml10" appearance="fill">
+                    <input [(ngModel)]="contestData.rank2" type="number" name="rank2" id="rank2" matInput
+                        placeholder="Rank#2 prize money" required />
+                </mat-form-field> <br>
+
+                <mat-label>Rank #3</mat-label>
+                <mat-form-field class="half-width ml10" appearance="fill">
+                    <input [(ngModel)]="contestData.rank3" type="number" name="rank3" id="rank3" matInput
+                        placeholder="Rank#3 prize money" required />
+                </mat-form-field>
+
+
+                <div class="container text-center mb10">
+                    <button type="submit" mat-raised-button color="primary" class="mb10">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>
+
+
+<!-- details of create contest's -->
+<div>
+    <mat-card class="wid">
+        <div class="text-center">
+            <h1 class="mt20"><u><b>All Contest Details </b></u></h1>
+            <table class="table table-hover table-bordered text-center justify">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">S.No.</th>
+                        <th scope="col">Contest Name</th>
+                        <th scope="col">Entry Fee</th>
+                        <th scope="col">Prize Money</th>
+                        <th scope="col">Action</th>
+                        <!-- <th scope="col">Delete</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ContestItem of PlayerArray; let i = index">
+                        <!-- <th scope="row">1</th> -->
+                        <td>{{ ContestItem.id }}</td>
+                        <td>{{ ContestItem.name}}</td>
+                        <td>{{ ContestItem.entryFee}}</td>
+                        <td>{{ ContestItem.prizeMoney}}</td>
+                        <td>
+                            <button type="submit" mat-raised-button (click)="edit(ContestItem)" class="mr20" color="primary" title="Edit">
+                                Edit
+                            </button>
+                            <button type="submit" mat-raised-button (click)="delete(ContestItem.id)" color="warn"
+                                title="Delete">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </mat-card>
+</div>         

@@ -1,0 +1,83 @@
+<!-- sidebar -->
+<app-admin-dashboard></app-admin-dashboard>
+
+<!-- create contest -->
+<div class="bootstrap-wrapper">
+  <div class="bg text-center">
+    <mat-card class="width text-center mb20">
+      <h1 class="text-center">
+        <b><u>Map Contest Fixture</u> </b>
+      </h1>
+
+      <!-- {{ mapContestData | json }} -->
+
+      <form (ngSubmit)="formSubmit()">
+
+
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Match Team</mat-label>
+          <mat-select (selectionChange)="clicked1($event)" [(ngModel)]="mapContestData.matchId" name="matchId">
+            <mat-option *ngFor="let team of TeamArray" [value]="team.id">
+              {{ team.teamA }} vs {{ team.teamB }} <span style="float:right">({{team.id}})</span>
+            </mat-option>
+          </mat-select>
+          <!-- <mat-select name="matches" [(ngModel)]="mapContestData.matches">
+            <mat-option *ngFor="let team of TeamArray" [value]="team.id">{{ team.teamA }} vs {{ team.teamB }}</mat-option>
+          </mat-select> -->
+        </mat-form-field>
+
+        
+        <mat-form-field class="full-width ml10" appearance="fill">
+          <mat-label>Contest Name</mat-label>
+          <mat-select name="contestId" [(ngModel)]="mapContestData.contestId">
+            <mat-option *ngFor="let contest of filteredContests" [value]="contest.id">{{ contest.name }}   ({{contest.id}}) </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="container text-center mb10">
+          <button type="submit" mat-raised-button color="primary" class="mb10">
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
+
+<!-- All Mapping Contest Fixture Data -->
+<div>
+  <mat-card class="wid">
+    <div class="text-center">
+      <h1 class="mt20">
+        <u><b>All Mapping Contest Fixtures Details </b></u>
+      </h1>
+      <table class="table table-hover table-bordered text-center justify">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Match Id</th>
+            <th scope="col">Match Team</th>
+            <th scope="col">Contest Id</th>
+            <th scope="col">Contest Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of MappingContestArray;">
+            <!-- <th scope="row">1</th> -->
+            <td>{{ item.id }}</td>
+            <td>{{ item.matchId }}</td>
+            <td>{{ item.matchName }} </td>
+            <td>{{ item.contestId }}</td>
+            <td>{{ item.contestName }}</td>
+            <td>
+              <button type="submit" mat-raised-button (click)="delete(item.id)" color="warn" title="Delete">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,257 @@
+<!-- sidebar -->
+<app-admin-dashboard></app-admin-dashboard>
+
+<!-- content's of different, cricket specialization ----->
+<div class="bootstrap-wrapper">
+    <div class="bg">
+
+        <!-- <h1 class="text-center mt10"><b> Adding players to the team </b></h1> -->
+
+        <!-- <div class="ml10">
+            <b> ** Rules for adding player ** </b>
+            <p *ngIf="PlayerArrayStatus">1) 10 players need to be selected from both teams.</p>
+            <p *ngIf="PlayerArrayWKStatus"> 
+                2) wicket-keeper should be must.<br>
+                3) User can select atmost 7 players from each team.<br>
+            </p>
+        </div> -->
+
+
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <!-- <title>CodePen - OL circle cards</title> -->
+            <link rel="stylesheet" href="./credits.component.css">
+        </head>
+
+        <body>
+            <!-- partial:index.partial.html -->
+            <h1 class="text-center mt10"><b> Adding players to the team </b></h1>
+            <h3><b> ** Rules for adding player ** </b></h3>
+            <ol>
+                <li>
+                    <div class="icon"><i class="fa-solid fa-bicycle"></i></div>
+                    <div class="title">RuleNo.1</div>
+                    <div class="descr">10 players need to be selected from both teams*</div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fa-solid fa-car"></i></div>
+                    <div class="title">RuleNo.2</div>
+                    <div class="descr">Wicket-keeper should be must*</div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fa-solid fa-helicopter"></i></div>
+                    <div class="title">RuleNo.3</div>
+                    <div class="descr">User can select atmost 7 players from each team*</div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fa-solid fa-plane"></i></div>
+                    <div class="title">RuleNo.4</div>
+                    <div class="descr">Player points should not exceed 100 points*</div>
+                </li>
+                <!--<li>
+                    <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+                    <div class="title">Step 5</div>
+                    <div class="descr">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, porro.</div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fa-solid fa-bus"></i></div>
+                    <div class="title">Step 6</div>
+                    <div class="descr">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, porro.</div>
+                </li> -->
+            </ol>
+            <!-- <div class="credits">
+                <a target="_blank"
+                    href="https://www.freepik.com/premium-vector/vector-infographic-design-template-with-icons-8-options-steps_10571883.htm">inspired
+                    by</a>
+            </div> -->
+            <!-- partial -->
+        </body>
+        </html>
+
+
+        <mat-tab-group>
+
+            <!----------------------------------------------------Batter------------------------------------------------->
+            <mat-tab label="BAT(O)">
+
+                <table class="table table-hover table-bordered text-center justify mt10">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Player Id</th>
+                            <th scope="col">Player Name</th>
+                            <th scope="col">Player Points</th>
+                            <th scope="col">Player Skills</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let PlayerItem of batterArray; let i = index">
+                            <td>{{ PlayerItem.id }}</td>
+                            <td>{{ PlayerItem.player_name }}</td>
+                            <td>{{ PlayerItem.player_points }}</td>
+                            <td>{{ PlayerItem.player_skills }}</td>
+                            <td>
+                                <button type="submit" mat-raised-button color="accent" (click)="add(PlayerItem)"
+                                    title="Edit">
+                                    Add
+                                </button>
+                                <!-- <button type="submit" mat-raised-button (click)="delete(MatchItem.id)" color="warn" title="Delete">
+                                Delete
+                              </button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </mat-tab>
+
+            <!--------------------------------------------------Bowler------------------------------------------------->
+            <mat-tab label="BOWL(O)">
+
+                <table class="table table-hover table-bordered text-center justify mt10">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Player Id</th>
+                            <th scope="col">Player Name</th>
+                            <th scope="col">Player Points</th>
+                            <th scope="col">Player Skills</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let PlayerItem of bowlerArray; let i = index">
+                            <td>{{ PlayerItem.id }}</td>
+                            <td>{{ PlayerItem.player_name }}</td>
+                            <td>{{ PlayerItem.player_points }}</td>
+                            <td>{{ PlayerItem.player_skills }}</td>
+                            <td>
+                                <button type="submit" mat-raised-button color="accent" (click)="add(PlayerItem)"
+                                    title="Edit">
+                                    Add
+                                </button>
+                                <!-- <button type="submit" mat-raised-button (click)="delete(MatchItem.id)" color="warn" title="Delete">
+                                Delete
+                              </button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-tab>
+
+            <!---------------------------------------Wicket Keeper---------------------------------------------->
+            <mat-tab label="WK(O)">
+                <h3 class="mt20 ml10"><b><u> Available Players </u></b></h3>
+
+                <table class="table table-hover table-bordered text-center justify mt10">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Player Id</th>
+                            <th scope="col">Player Name</th>
+                            <th scope="col">Player Points</th>
+                            <th scope="col">Player Skills</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let PlayerItem of weeketKeeperArray; let i = index">
+                            <td>{{ PlayerItem.id }}</td>
+                            <td>{{ PlayerItem.player_name }}</td>
+                            <td>{{ PlayerItem.player_points }}</td>
+                            <td>{{ PlayerItem.player_skills }}</td>
+                            <td>
+                                <button type="submit" mat-raised-button color="accent" (click)="add(PlayerItem)"
+                                    title="Edit">
+                                    Add
+                                </button>
+                                <!-- <button type="submit" mat-raised-button (click)="delete(MatchItem.id)" color="warn" title="Delete">
+                            Delete
+                          </button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </mat-tab>
+
+            <!------------------------------------------------All Rounder------------------------------------------------->
+            <mat-tab label="AR(O)">
+
+                <table class="table table-hover table-bordered text-center justify mt10">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Player Id</th>
+                            <th scope="col">Player Name</th>
+                            <th scope="col">Player Points</th>
+                            <th scope="col">Player Skills</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let PlayerItem of allrounderArray; let i = index">
+                            <td>{{ PlayerItem.id }}</td>
+                            <td>{{ PlayerItem.player_name }}</td>
+                            <td>{{ PlayerItem.player_points }}</td>
+                            <td>{{ PlayerItem.player_skills }}</td>
+                            <td>
+                                <button type="submit" mat-raised-button color="accent" (click)="add(PlayerItem)"
+                                    title="Edit">
+                                    Add
+                                </button>
+                                <!-- <button type="submit" mat-raised-button (click)="delete(MatchItem.id)" color="warn" title="Delete">
+                                Delete
+                              </button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </mat-tab>
+
+        </mat-tab-group>
+
+        <!---------------------------------------Final Team----------------------------------------------------->
+
+        <h2 class="mt20 ml20"> Players Added ({{this.newFinalArray.length}}/10)</h2>
+        <h2 > Player Points ({{this.sum}}/100)</h2>
+
+        <table class="table table-hover table-bordered text-center justify mt10">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Player Id</th>
+                    <th scope="col">Player Name</th>
+                    <th scope="col">Player Points</th>
+                    <th scope="col">Player Skills</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let PlayerItem of newFinalArray; let i = index">
+                    <td>{{ PlayerItem.id }}</td>
+                    <td>{{ PlayerItem.player_name }}</td>
+                    <td>{{ PlayerItem.player_points }}</td>
+                    <td>{{ PlayerItem.player_skills }}</td>
+                    <td>
+                        <button type="submit" mat-raised-button color="warn" (click)="remove(PlayerItem)" title="Edit">
+                            Remove
+                        </button>
+                        <!-- <button type="submit" mat-raised-button (click)="delete(MatchItem.id)" color="warn" title="Delete">
+                        Delete
+                      </button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button type="submit" mat-raised-button color="warn" title="Edit">
+            Remove
+        </button>
+    </div>
+</div>
